@@ -1,6 +1,5 @@
 - hosts: localhost
-  connection: local
-  gather_facts: False
+  become: yes
   
   tasks:
     - name: make instance 1
@@ -31,8 +30,7 @@
 
 - hosts: ec2host1
   gather_facts: True
-  user: ubuntu
-  sudo: True
+  become: yes
   
   tasks:
 - name: install package for maven
@@ -88,8 +86,7 @@
 
 - hosts: ec2host2
   gather_facts: True
-  user: ubuntu
-  sudo: True
+  become: yes
   
 - name: install tomcat9
   apt:
